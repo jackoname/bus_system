@@ -1,0 +1,65 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>无标题文档</title>
+    <link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/asserts/css/signin.css}" rel="stylesheet">
+</head>
+<body STYLE="">
+
+<div class="container" align="center"><h3>镇江公交后台管理系统</h3><hr>
+
+
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link " >welcom~ <text th:text="${myseeion}">oyhj</text></a> </li>
+
+        <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">站点管理</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" th:href="@{/station/show}">查询站点</a>
+                <a class="dropdown-item" th:href="@{/station/add}">添加站点</a>
+                <a class="dropdown-item" th:href="@{/station/modif}">修改站点</a>
+                <a class="dropdown-item" th:href="@{/station/del}">删除站点</a>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">公交管理</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" th:href="@{/bus/add}">添加公交</a>
+                <a class="dropdown-item" th:href="@{/bus/modif}">修改公交</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" th:href="@{/bus/del}">删除公交</a>
+            </div>
+        </li>
+        <li class="nav-item"> <a class="nav-link "th:href="@{/admit/notice}">公告管理</a> </li>
+        <li class="nav-item"> <a class="nav-link" th:href="@{/admit/advice}">反馈管理</a> </li>
+        <li class="nav-item"> <a class="nav-link 	"th:href="@{/admit/adusers}">用户管理</a> </li>
+        <li class="nav-item"> <a class="nav-link " th:href="@{/exit}">退出登录</a> </li>
+    </ul>
+
+    <script type="text/javascript" src="/asserts/js/jquery-3.2.1.slim.min.js"></script>
+    <script type="text/javascript" src="/asserts/js/popper.min.js"></script>
+    <script type="text/javascript" src="/asserts/js/bootstrap.min.js"></script>
+
+    <hr>
+    <div>
+        <div class="container"  style="color:#1F18C3">
+            <h5 class="card-title" align="center"  style="color:#000000">公告</h5>
+            <div class="card-body" align="center" th:each="emp:${emps}" >
+
+                <div class="container" align="center"  style="margin: 20px"  >发布时间:
+                    <time style="margin: 20px" th:text="${emp.getDt()}">2023.01.08</time>
+                    用户：<au  style="margin: 20px" th:text="${emp.getUserid()}">oyhj</au></div>
+                <p class="card-text" align="center"  style="margin: 20px ; color:#000000"  th:text="${emp.getMessage()}"    >xxx公交管理系统正式上线</p>
+
+            </div>
+        </div>
+    </div>
+        <hr>
+
+
+        </div>
+    </div>
+</body>
+</html>

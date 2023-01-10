@@ -1,0 +1,83 @@
+﻿<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>无标题文档</title>
+	<link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/asserts/css/signin.css}" rel="stylesheet">
+</head>
+	<body STYLE="">
+
+	<div class="container" align="center"><h3>镇江公交后台管理系统</h3><hr>
+
+
+
+		<ul class="nav nav-tabs">
+			<li class="nav-item"><a class="nav-link " >welcom~ <text th:text="${myseeion}">oyhj</text></a> </li>
+
+			<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">站点管理</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" th:href="@{/station/show}">查询站点</a>
+					<a class="dropdown-item" th:href="@{/station/add}">添加站点</a>
+					<a class="dropdown-item" th:href="@{/station/modif}">修改站点</a>
+					<a class="dropdown-item" th:href="@{/station/del}">删除站点</a>
+				</div>
+			</li>
+
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">公交管理</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" th:href="@{/bus/add}">添加公交</a>
+					<a class="dropdown-item" th:href="@{/bus/modif}">修改公交</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" th:href="@{/bus/del}">删除公交</a>
+				</div>
+			</li>
+			<li class="nav-item"> <a class="nav-link "th:href="@{/admit/notice}">公告管理</a> </li>
+			<li class="nav-item"> <a class="nav-link" th:href="@{/admit/advice}">反馈管理</a> </li>
+			<li class="nav-item"> <a class="nav-link 	"th:href="@{/admit/adusers}">用户管理</a> </li>
+			<li class="nav-item"> <a class="nav-link " th:href="@{/exit}">退出登录</a> </li>
+		</ul>
+
+		<script type="text/javascript" src="/asserts/js/jquery-3.2.1.slim.min.js"></script>
+		<script type="text/javascript" src="/asserts/js/popper.min.js"></script>
+		<script type="text/javascript" src="/asserts/js/bootstrap.min.js"></script>
+
+		<hr>
+
+		<form th:action="@{/bus/adsearch}">
+			<div class="form-group"  align="center">
+				<input type="search" name="keyword"    style="width: 500px" placeholder="86路" >
+				<button type="submit" class="btn-primary"style="width: 80px">搜 索</button>
+			</div>
+		</form>
+		<hr>
+
+		<div class="card col-md-12">
+			<div class="card-header" align="center"> 公交路线 </div>
+			<!--/*@thymesVar id="emps" type="javafx"*/-->
+			<ul class="list-group list-group-flush" th:each="emp:${emps}">
+				<li class="list-group-item" >
+					<div class="container"  >
+						<div Style="float: left; margin-right:80px; margin-left: 20px;" align="right" >
+							<!--/*@thymesVar id="getUserid" type="java"*/-->
+							<text  th:text="${emp.getBusid()}+'路'" Style="font-size: 30px; " >86路</text></div>
+						<div Style="float: left; margin-top:12.5px; color:#61d714">
+							<text Style="margin-right:50px" >
+								起始站：<!--/*@thymesVar id="getUsername" type="javafx"*/-->
+								<text style="color: blue; margin-right:40px " ><text  th:text="${emp.getBegin()}">大学城 </text></text>
+								<text Style="margin-right:40px; "  >终点站：<text style="color: blue" th:text="${emp.getEnd()}"> 火车站</text></text>
+								<text Style="margin-right:40px;" >首班车：<text style="color: blue"th:text="${emp.getBusbgo()}">6：30am</text></text>
+								<text Style="margin-right:40px"> 末班车：<text style="color: blue"th:text="${emp.getBusego()}">20：30pm</text></text>
+						</div>
+						</text>
+						<div align="center"  style=" margin-right:40px" >
+
+							<a  th:href="@{/admit/show((myid=${myseeion},keyword=${emp.getBusid()}))}"><button type="button" class="btn btn-success" >查看更多</button></a></div>
+					</div>
+			</ul>
+
+
+		</div>
+	</div>
+</body>
+</html>

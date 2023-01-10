@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Signin Template for Bootstrap</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/asserts/css/signin.css}" rel="stylesheet">
+</head>
+<body>
+
+
+<div class="container" align="center">
+    <h3>修改公交车</h3><hr>
+    <form th:action="@{/bus/del}">
+        <div class="form-group">
+            <label >请输入要删除的公交车牌号</label>
+            <input type="text" class="form-control" name="busno" placeholder="车牌号">
+            <hr>
+
+        <button type="submit" class="btn btn-primary">删除</button>
+        <button type="reset" class="btn btn-primary">重写</button>
+        <button type="button" class="btn btn-success"><a th:href="@{/admit/login((myid=${myseeion}))}">返回</a></button>
+    </form>
+</div>
+</body>
+</html>

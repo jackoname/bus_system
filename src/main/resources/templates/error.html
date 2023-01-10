@@ -1,0 +1,30 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>无标题文档</title>
+    <link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/asserts/css/signin.css}" rel="stylesheet">
+
+    <script language="JavaScript">
+        function go() {
+            window.history.go(-1)
+        }
+        setTimeout("go()",3000)
+    </script>
+</head>
+<body>
+<div class="container" align="right"><img th:src="@{/asserts/img/error1.png}" alt=" " width="122" height="100" class="rounded-circle img-fluid"/>
+</div>
+
+<div class="container" th:align="center"><h1 th:text="${error}"></h1></div>
+<div class="container" align="left"><img th:src="@{/asserts/img/error2.png}" alt=" " width="122" height="100" class="rounded-circle img-fluid"/>
+</div>
+<br><small>3s后自动返回</small>
+</body>
+</html>

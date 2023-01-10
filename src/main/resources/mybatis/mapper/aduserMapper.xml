@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bus.oyhj.mapper.AduserMapper">
+    <select id="queryUserList" resultType="admitBean">
+        select * from users_table
+    </select>
+
+    <select id="loginUser" resultType="admitBean">
+        SELECT * from  aduser_table where admitid=#{admitid} and admitpassword=#{admitpassword}
+    </select>
+    <delete id="delUser"  parameterType="userBean">
+        delete from users_table where  username=#{username} and userpassword=#{userpassword}
+    </delete>
+    <insert id="addNotice"  parameterType="noticeBean">
+        insert into notice_table (admitid , mesage, time )
+        VALUES (#{admitid},#{mesage},#{time})
+    </insert>
+    <select id="allAdvice" resultType="faceBackBean">
+        select * from faceback_table
+    </select>
+</mapper>

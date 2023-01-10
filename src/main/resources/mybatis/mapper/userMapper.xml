@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bus.oyhj.mapper.UserMapper">
+    <select id="queryUserList" resultType="userBean">
+        select * from users_table
+    </select>
+
+    <select id="loginUser" resultType="userBean">
+        SELECT * from users_table where username=#{username} and userpassword=#{userpassword}
+    </select>
+
+    <select id="allNotice" resultType="noticeBean">
+        select * from notice_table
+    </select>
+
+    <insert id="addAdvice"  parameterType="faceBackBean">
+        insert into faceback_table (userid , message, time )
+        VALUES (#{userid},#{message},#{time})
+    </insert>
+
+    <insert id="userNew"  parameterType="userBean">
+        insert into users_table (username, userpassword, email)
+        VALUES (#{username },#{userpassword},#{email})
+    </insert>
+
+    <update id="updateUser"  parameterType="userBean">
+        update users_table set userpassword =#{userpassword}
+        where username  = #{username } and email  = #{email}
+    </update>
+</mapper>

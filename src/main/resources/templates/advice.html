@@ -1,0 +1,48 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>无标题文档</title>
+    <link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/asserts/css/signin.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container" th:align="center">
+<div class="container" align="center"><h3>镇江公交系统</h3><hr>
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link " >welcom~ <text th:text="${myseeion}">oyhj</text></a> </li>
+        <li class="nav-item"> <!--/*@thymesVar id="mysession" type="javafx"*/-->
+            <!--/*@thymesVar id="myseeion" type="jdk"*/-->
+            <a class="nav-link 	" th:href="@{/user/login((myid=${myseeion}))}">公交查询</a> </li>
+        <li class="nav-item"> <a class="nav-link" th:href="@{/user/notice((myid=${myseeion}))}">信息公告</a></li>
+        <li class="nav-item"> <a class="nav-link" th:href="@{/user/advice((myid=${myseeion}))}">建议意见</a></li>
+        <li class="nav-item"> <a class="nav-link " th:href="@{/user/myinf((myid=${myseeion}))}">个人中心</a> </li>
+        <li class="nav-item"> <a class="nav-link " th:href="@{/exit}">退出登录</a> </li>
+    </ul>
+
+</div>
+<div class="container" th:align="center">
+<div class="container"  align="center" style="margin-left: 250px;margin-top: 50px">
+    <form name="form2"  th:action="@{/user/advice}"   th:align="center">
+        <table width="50%" border="1" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#CCFFCC" cellpadding="4" >
+            <tr>
+                <td colspan="2"> <div align="center"><b>反馈建议</b></div> </td>
+            </tr>
+
+
+            <tr>
+                <td colspan="2"> <div align="center">建 议<br> <textarea  cols="50" rows="3" name="message"></textarea>
+                </div>
+                </td>
+            </tr>
+            <tr>
+                <td> <div align="right"> <input type="submit" name="Submit" value="提 交"> </div> </td>
+                <td> <input type="reset" name="Submit2" value="重 写"> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</div>
+</div>
+</body>
+</html>

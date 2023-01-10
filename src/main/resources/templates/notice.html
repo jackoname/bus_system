@@ -1,0 +1,40 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>无标题文档</title>
+    <link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/asserts/css/signin.css}" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" align="center"><h3>镇江公交系统</h3><hr>
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link " >welcom~ <text th:text="${myseeion}">oyhj</text></a> </li>
+        <li class="nav-item"> <!--/*@thymesVar id="mysession" type="javafx"*/-->
+            <!--/*@thymesVar id="myseeion" type="jdk"*/-->
+            <a class="nav-link 	" th:href="@{/user/login((myid=${myseeion}))}">公交查询</a> </li>
+        <li class="nav-item"> <a class="nav-link" th:href="@{/user/notice((myid=${myseeion}))}">信息公告</a></li>
+        <li class="nav-item"> <a class="nav-link" th:href="@{/user/advice((myid=${myseeion}))}">建议意见</a></li>
+        <li class="nav-item"> <a class="nav-link " th:href="@{/user/myinf((myid=${myseeion}))}">个人中心</a> </li>
+        <li class="nav-item"> <a class="nav-link " th:href="@{/exit}">退出登录</a> </li>
+    </ul>
+
+
+<hr>
+
+<div>
+<div class="container"  style="color:#1F18C3">
+    <h5 class="card-title" align="center"  style="color:#000000">公告</h5>
+    <div class="card-body" align="center" th:each="emp:${emps}" >
+
+        <div class="container" align="center"  style="margin: 20px"  >发布时间:
+            <time style="margin: 20px" th:text="${emp.getDt}">2023.01.08</time>
+            发布者：<au  style="margin: 20px" th:text="${emp.getAdmit()}">oyhj</au></div>
+        <p class="card-text" align="center"  style="margin: 20px ; color:#000000"  th:text="${emp.getMesage()}"    >xxx公交管理系统正式上线</p>
+
+    </div>
+</div>
+</div>
+</div>
+</body>
+</html>

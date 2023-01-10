@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Signin Template for Bootstrap</title>
+	<!-- Bootstrap core CSS -->
+	<link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link th:href="@{/asserts/css/signin.css}" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+	<div class="card col-md-12">
+		<div class="card-body">
+			<div class="container" align="center"><h3>镇江公交系统</h3><hr>
+
+				<div class="card col-md-12">
+					<div class="card-header" align="center"  th:text="${emp.getBusid()}+'路公交路线'"> 86路 </div>
+					<!--/*@thymesVar id="emps" type="javafx"*/-->
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item" >
+							<div class="container"  >
+								<div Style="float: left; margin-right:80px; margin-left: 20px;" align="right"  >
+
+
+									<div Style="float: left; margin-top:12.5px; color:#61d714">
+										<text Style="margin-right:20px" >
+											起始站：<!--/*@thymesVar id="getUsername" type="javafx"*/-->
+											<text style="color: blue"  th:text="${emp.getBegin()}">大学城</text></text>
+										<text Style="margin-right:20px; "  >终点站：<text style="color: blue"th:text="${emp.getEnd()}"> 火车站</text></text>
+										<text Style="margin-right:20px;" >首班车：<text style="color: blue"th:text="${emp.getBusbgo()}">6：30am</text></text>
+										<text Style="margin-right:20px"> 末班车：<text style="color: blue"th:text="${emp.getBusego()}">20：30pm</text></text>
+									</div>
+
+								</div><!--/*@thymesVar id="myseeion" type=""*/-->
+								<a  th:href="@{/admit/login((myid=${myseeion}))}" class="btn btn-primary" style="margin-top: 15px">返回</a> </div>
+
+							<hr>
+							<div class="container" style="float: left;display: flex"  >
+								<a  th:href="@{/admit/show((keyword=${emp.getBusid()}, myid=${mysession}))}" class="card-body col-md-1"  style="background:pink; border: white solid 3px;border-radius: 20px" align="center" th:each="key:${keyst}">
+									<text class="card-title" align="center" th:text="${key.getStationname()}" >大学城</text> </a>
+								<hr>
+
+
+							</div>
+
+</html>

@@ -1,0 +1,73 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>无标题文档</title>
+    <link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/asserts/css/signin.css}" rel="stylesheet">
+</head>
+<body STYLE="">
+<div class="container">
+<div class="container" align="center"><h3>镇江公交后台管理系统</h3><hr>
+
+
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link " >welcom~ <text th:text="${myseeion}">oyhj</text></a> </li>
+
+        <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">站点管理</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" th:href="@{/station/show}">查询站点</a>
+                <a class="dropdown-item" th:href="@{/station/add}">添加站点</a>
+                <a class="dropdown-item" th:href="@{/station/modif}">修改站点</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" th:href="@{/station/del}">删除站点</a>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">公交管理</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" th:href="@{/bus/add}">添加公交</a>
+                <a class="dropdown-item" th:href="@{/bus/modif}">修改公交</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" th:href="@{/bus/del}">删除公交</a>
+            </div>
+        </li>
+        <li class="nav-item"> <a class="nav-link "th:href="@{/admit/notice}">公告管理</a> </li>
+        <li class="nav-item"> <a class="nav-link" th:href="@{/admit/advice}">反馈管理</a> </li>
+        <li class="nav-item"> <a class="nav-link 	"th:href="@{/admit/adusers}">用户管理</a> </li>
+        <li class="nav-item"> <a class="nav-link " th:href="@{/exit}">退出登录</a> </li>
+    </ul>
+
+    <script type="text/javascript" src="/asserts/js/jquery-3.2.1.slim.min.js"></script>
+    <script type="text/javascript" src="/asserts/js/popper.min.js"></script>
+    <script type="text/javascript" src="/asserts/js/bootstrap.min.js"></script>
+
+    <hr>
+    </div>
+    <div class="container" th:align="center">
+        <div class="container"  align="center" style="margin-left: 250px;margin-top: 50px">
+            <form name="form2"  th:action="@{/admit/addnotice}" method="post"  th:align="center">
+                <table width="50%" border="1" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#CCFFCC" cellpadding="4" >
+                    <tr>
+                        <td colspan="2"> <div align="center"><b>发布通知</b></div> </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2"> <div align="center"><br> <textarea name="message" cols="30" rows="3"></textarea>
+                        </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <div align="right"> <input type="submit" name="Submit" value="提 交"> </div> </td>
+                        <td> <input type="reset" name="Submit2" value="重 写"> </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</body>
+</html>

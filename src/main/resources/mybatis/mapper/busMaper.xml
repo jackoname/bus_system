@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bus.oyhj.mapper.BusMapper">
+    <select id="queryUserList" resultType="busBean">
+        select * from bus_table
+    </select>
+    <select id="queryUserListbyId" resultType="busBean">
+        select * from bus_table where busid=#{busid}
+    </select>
+    <select id="queryUserListbySid" resultType="busStationBean">
+        SELECT * from  busstation_table where busid=#{busid}
+    </select>
+    <select id="queryUserListByinf" resultType="busBean">
+        SELECT * from bus_table where
+        busid LIKE '%${busid}%' or begin LIKE '%${begin}%' or end LIKE '%${begin}%'
+    </select>
+    <select id="queryUserListSta" resultType="busStationBean">
+        SELECT * from busstation_table
+    </select>
+
+    <insert id="addBus"  parameterType="busBean">
+        insert into bus_table (busid,busbgo,busego,begin,end,busno)
+        VALUES (#{busid},#{busbgo},#{busego},#{begin},#{end},#{busno})
+    </insert>
+
+    <insert id="addBusStations"  parameterType="busStationBean">
+        insert into busstation_table (busid , stationname, orders )
+        VALUES (#{busid},#{stationname},#{orders})
+    </insert>
+
+    <update id="updateStaBadd"   parameterType="busStationBean">
+        update  busstation_table  set orders =orders+1
+        where busid=#{busid} and orders >=#{ orders }
+    </update>
+
+    <update id="updateStaBdel"   parameterType="busStationBean">
+        update  busstation_table  set orders =orders-1
+        where busid=#{busid} and orders >=#{ orders }
+    </update>
+    <delete id="delBusStations"  parameterType="busStationBean">
+        delete from busstation_table
+        where  busid=#{busid}  and orders =#{ orders }
+    </delete>
+    <update id="updateSta"  parameterType="busStationBean">
+        update  busstation_table  set stationname =#{stationname}
+        where busid = #{busid} and orders=#{orders}
+    </update>
+
+    <update id="updateBus"  parameterType="busBean">
+        update bus_table  set busid =#{busid}, busbgo =#{busbgo},busego =#{busego}
+        where busno = #{busno}
+    </update>
+
+    <delete id="delBus"  parameterType="busBean">
+        delete from bus_table where  busno=#{busno}
+    </delete>
+
+    <update id="updateBusbe"  parameterType="busBean">
+        update bus_table  set  begin =#{begin },end =#{end}
+        where busid = #{busid}
+    </update>
+</mapper>
