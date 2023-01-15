@@ -21,13 +21,10 @@ import java.util.ArrayList;
 import java.util.List;
 @Controller
 public class busController {
-
     @Autowired
     @Qualifier("busServiceimp")
     private BusService busService;
     public  List<busBean> setBus(List<busBean> busbean,List<busStationBean>busS){
-
-
         for (busBean bus:busbean) {
             String begign="",end="";
             int max=0;
@@ -56,7 +53,7 @@ public class busController {
             System.out.println(busStationBean.get(i).toString());
         }
         model.addAttribute("stas",busStationBean);
-        return "/station/showstation";
+        return "station/showstation";
     }
     @RequestMapping("/station/modif")
     public String smodif(HttpSession session, Model model, @RequestParam(name="busid",required = false, defaultValue = "0") Integer busid,
@@ -66,7 +63,7 @@ public class busController {
         if(busid!=0&&order!=0){
             System.out.println(busService.updateSta(busStationBean));}
         model.addAttribute("myseeion",session.getAttribute("loginUser"));
-        return "/station/modifstation";
+        return "station/modifstation";
     }
     @RequestMapping("/station/add")
     public String sadd(HttpSession session, Model model,
@@ -83,7 +80,7 @@ public class busController {
         List<busStationBean> busStationBean= busService.queryUserListSta();
         List<busBean>busbeans=busService.queryUserList();
        setBus(busbeans,busStationBean);
-        return "/station/addstation";
+        return "station/addstation";
     }
 
     @RequestMapping("/station/del")
@@ -101,7 +98,7 @@ public class busController {
         List<busStationBean> busStationBean= busService.queryUserListSta();
         List<busBean>busbeans=busService.queryUserList();
         setBus(busbeans,busStationBean);
-        return "/station/delstation";
+        return "station/delstation";
     }
     @RequestMapping("/bus/add")
     public String badd(HttpSession session, Model model,
@@ -116,7 +113,7 @@ public class busController {
         List<busStationBean> busStationBean= busService.queryUserListSta();
         List<busBean>busbeans=busService.queryUserList();
         setBus(busbeans,busStationBean);
-        return "/bus/addbus";
+        return "bus/addbus";
     }
 
     @RequestMapping("/bus/modif")
@@ -128,7 +125,7 @@ public class busController {
         if(busid!=0){
             System.out.println(busService.updateBus(bus));}
         model.addAttribute("myseeion",session.getAttribute("loginUser"));
-        return "/bus/modifbus";
+        return "bus/modifbus";
     }
 
     @RequestMapping("/bus/del")
@@ -140,7 +137,7 @@ public class busController {
         List<busStationBean> busStationBean= busService.queryUserListSta();
         List<busBean>busbeans=busService.queryUserList();
         setBus(busbeans,busStationBean);
-        return "/bus/delbus";
+        return "bus/delbus";
     }
 
     @RequestMapping("/bus/search")
@@ -159,7 +156,6 @@ public class busController {
         }
         return "success";
     }
-
     @RequestMapping("/bus/adsearch")
     public String adsearch(Model model,@RequestParam(name="keyword") String keyword){
         int i=Integer.valueOf(keyword);

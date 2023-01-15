@@ -63,12 +63,12 @@ public class admitController {
         noticeBean noticeBean =new noticeBean(String.valueOf(session.getAttribute("loginUser")),message);
         System.out.println(aduserService.addNotice(noticeBean));
         model.addAttribute("myseeion",session.getAttribute("loginUser"));
-        return "/emp/adnotice";
+        return "emp/adnotice";
     }
     @RequestMapping("/admit/notice")
     public String notice(HttpSession session,Model model){
         model.addAttribute("myseeion",session.getAttribute("loginUser"));
-        return "/emp/adnotice";
+        return "emp/adnotice";
     }
     @RequestMapping("/admit/turnlogin")
     public String turnadmitlogin(){
@@ -83,7 +83,7 @@ public class admitController {
         model.addAttribute("myseeion",session.getAttribute("loginUser"));
         model.addAttribute("emp",busBeans);
         model.addAttribute("keyst",busStationBeans);
-        return "/emp/list";
+        return "emp/list";
     }
 
     @RequestMapping("/admit/login")
@@ -123,7 +123,7 @@ public class admitController {
         faceBackBeans.sort(Comparator.comparing(faceBackBean::getId).reversed());
         model.addAttribute("emps", faceBackBeans);
         model.addAttribute("myseeion",session.getAttribute("loginUser"));
-        return "/emp/adadvice";
+        return "emp/adadvice";
     }
     @RequestMapping("/admit/delu")
     public String delu(HttpSession session, Model model,String un,String psw){
@@ -131,13 +131,13 @@ public class admitController {
         System.out.println(aduserService.delUser(userBean));
         model.addAttribute("emps",userService.queryUserList());
         model.addAttribute("myseeion",session.getAttribute("loginUser"));
-        return "/emp/adusers";
+        return "emp/adusers";
     }
+
     @RequestMapping("/admit/adusers")
     public String ausers(HttpSession session, Model model){
-
         model.addAttribute("emps",userService.queryUserList());
         model.addAttribute("myseeion",session.getAttribute("loginUser"));
-        return "/emp/adusers";
+        return "emp/adusers";
     }
 }

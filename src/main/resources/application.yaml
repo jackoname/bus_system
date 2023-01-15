@@ -7,10 +7,23 @@ spring:
     active:
 ---
 server:
-  port: 8082
+  port: 8083
 spring:
   profiles: dev
   thymeleaf:
     cache: false
-
-
+---
+spring:
+  datasource:
+   url: jdbc:mysql://localhost:3306/busdata?useSSL=false&serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true
+   username: root
+   password: 123456
+   driver-class-name: com.mysql.cj.jdbc.Driver
+   type: com.alibaba.druid.pool.DruidDataSource
+   filters: stat,wall,log4j
+---
+mybatis:
+  type-aliases-package: com.bus.oyhj.pojo
+  mapper-locations: classpath:mybatis/mapper/*
+---
+  
