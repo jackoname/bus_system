@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 @Controller
 public class busController {
@@ -70,16 +71,39 @@ public class busController {
     @RequestParam(name="busid",required = false, defaultValue = "0") Integer busid,
                        @RequestParam(name="order",required = false,defaultValue = "0") Integer order,
                        @RequestParam(name="stationname",required = false) String stationname){
-        busStationBean b=new busStationBean();
-        b.setBusid(busid);b.setOrder(order);
-        System.out.println(busService.updateStaBadd(b)+"        1 1111111");
-        busStationBean buss =new  busStationBean(order,busid,stationname);
-        if(busid!=0&&order!=0){
-            System.out.println(busService.addBusStations(buss));}
-        model.addAttribute("myseeion",session.getAttribute("loginUser"));
-        List<busStationBean> busStationBean= busService.queryUserListSta();
-        List<busBean>busbeans=busService.queryUserList();
-       setBus(busbeans,busStationBean);
+
+        int max=1;
+        if(busid!=0) {
+            List<busStationBean> busStationBeans = busService.queryUserListbySid(busid);
+            busStationBeans.sort(Comparator.comparing(busStationBean::getOrder).reversed());
+            System.out.println(busStationBeans.size() + "=======");
+            max = busStationBeans.get(0).getOrder() + 1;
+            //int max=5;
+        }
+      System.out.println("max:"+max+"  =============    "+"order:"+order);
+        model.addAttribute("myseeion", session.getAttribute("loginUser"));
+        if(order>0&&order<=max) {
+            if(max!=order) {
+                busStationBean b = new busStationBean();
+                b.setBusid(busid);
+                b.setOrder(order);
+                System.out.println(busService.updateStaBadd(b) + "        11111111");
+            }
+            busStationBean buss = new busStationBean(order, busid, stationname);
+            if (busid != 0 && order != 0) {
+                System.out.println(busService.addBusStations(buss));
+            }
+
+            List<busStationBean> busStationBean = busService.queryUserListSta();
+            List<busBean> busbeans = busService.queryUserList();
+            setBus(busbeans, busStationBean);
+            return "station/addstation";
+        }
+        else if(order<=0||max<order){
+            model.addAttribute("error", "输入的站点序号不合法！！");
+            return "error";
+        }
+
         return "station/addstation";
     }
 

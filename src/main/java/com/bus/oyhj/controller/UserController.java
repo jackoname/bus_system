@@ -34,7 +34,6 @@ public class UserController {
    private UserService userService;
 
     public  List<busBean> setBus(List<busBean> busbean,List<busStationBean>busS){
-
         for (busBean bus:busbean) {
             String begign="",end="";
             int max=0;
